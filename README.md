@@ -1,58 +1,75 @@
 # Adaptive_sampling_for_multi-profile
 
-To replicate the simulation result, one just need to run 'Int_simulation.R" file. We mainly used MASS and Splines packages, also use source function to access the other R file. 
+To replicate the simulation result, one just needs to run the `Int_simulation.R` file. We mainly use the `MASS` and `splines` packages, and also use the `source` function to access the other R files.
 
-Interpret the result: 
+## Interpret the Result
 
-The output of the simulation will be based on partial shift pattern. The output from the 'Model1_simulation.R' correspond to fig.2(a) and 'Model2_simulation.R' correspond to fig.2(b) respectively. Putting them together in 'Int_simulation.R' to complete the fig.2 from the manuscript. The output will have 6 subplots and 3  each column correspond to available resource r = 8,6,4. Each subplot has five lines correspond to the proposed, fpca, fpca with Δ = 0.01,0.05,0.1 methods. These line plots have mu-shift of 0.7,1.0,1.4,2.1,2.8 on the x-axis and corresponded ARL result on the y-axis. A table of ARL_1 is also generated in variable out_se, with ARL_1 information in every odd line and the standard error in every even row (correspond to table A1 of the appendix). 
+The output of the simulation is based on a partial shift pattern. The output from `Model1_simulation.R` corresponds to Fig. 2(a), and `Model2_simulation.R` corresponds to Fig. 2(b). Together, they complete Fig. 2 in the manuscript.
 
-To modify the simulation setting, one should go to "Model1_simulation.R" and "Model2_simulation.R". The shift type can be changed from partial shift into full shift by changing line 75-85 In the demo code, we used only for 100 repletion for computing ARL for demonstrating purpose, the estimated running time is about an hour depends on the devise you use. (in the actual simulation, we did 500 times). If one want to increase the number of trial, it's easy to edit line 64-70, line 134-138 by changing both i and length of from oc_run1 trough oc_run5. 
+The output will include 6 subplots (3 columns corresponding to available resources r = 8, 6, 4). Each subplot has five lines corresponding to the proposed method, FPCA, and FPCA with Δ = 0.01, 0.05, and 0.1.
 
+The x-axis shows mu-shifts of 0.7, 1.0, 1.4, 2.1, and 2.8, and the y-axis shows the corresponding ARL results. A table of ARL₁ values is also generated in the variable `out_se`, where ARL₁ values are in every odd row and standard errors are in every even row (corresponding to Table A1 in the appendix).
 
+## Modify the Simulation
 
-Detailed of files layout and functions contained
+To change the simulation settings, go to `Model1_simulation.R` and `Model2_simulation.R`. You can switch from partial shift to full shift by editing lines 75–85.
 
-Demo Folders have 6 other files : 
+In the demo code, only 100 repetitions are used for estimating ARL to demonstrate functionality (running time is about 1 hour depending on your device). In the actual simulation, 500 repetitions were used.
 
+To increase the number of trials, edit lines 64–70 and 134–138 by changing the loop for `oc_run1` through `oc_run5`.
 
-1.top_delta_ARL.R: include methods required for ARL_1 for fpca Δ = 0.01,0.1,0.5
-For foca with delta: ARLi_init_delta:helper function for initiate CUSUM chart 
-                     Get_ARLi_delta:Get running length
-                     df_hist_delta:Estimate control limit L
-                     cusum_df_delta:helper function for redistribution
+## Detailed File Layout and Functions
 
-2. fpca_ARL.R: include methods required for ARL_1 for fpca chart
-For fpca: dpca_score:calculate FPC scores from a profile 
-	  dpca_est:estimate FPCA model and parameters
-	  ARLi_initial:helper function for initiate CUSUM chart 
-          Get_ARLi:Get running length
-          df_hist:Estimate control limit L
-          cusum_df:helper function for redistribution
+The `Demo` folder contains the following 6 files:
 
-3.mfpca_ARL.R: include methods required for ARL_1 for proposed method 
-For proposed: mfpca_score:calculate MFPC scores from a multi-profile samples
-	      mfpca_est:estimate MFPCA model and parameters
-	      ARL_initial: initiate CUSUM chart
-              Get_ARL: Get running length
-              mf_hist: Estimate control limit L
-              cusum_stage: helper function for redistribution
-4.control limits train.R 
-	L_train: tune the control limits for all methods
+1. **top_delta_ARL.R**: Includes methods required for ARL₁ for FPCA with Δ = 0.01, 0.1, 0.5  
+   For FPCA with delta:
+   - `ARLi_init_delta`: helper function to initiate CUSUM chart  
+   - `Get_ARLi_delta`: get running length  
+   - `df_hist_delta`: estimate control limit L  
+   - `cusum_df_delta`: helper function for redistribution  
 
-5.Model1_simulation.R
-	Run the simulation for Model I Partial shift 
+2. **fpca_ARL.R**: Includes methods required for ARL₁ for FPCA chart  
+   For FPCA:
+   - `dpca_score`: calculate FPC scores from a profile  
+   - `dpca_est`: estimate FPCA model and parameters  
+   - `ARLi_initial`: helper function to initiate CUSUM chart  
+   - `Get_ARLi`: get running length  
+   - `df_hist`: estimate control limit L  
+   - `cusum_df`: helper function for redistribution  
 
-6.Model2_simulation.R
-	Run the simulation for Model II Partial shift
+3. **mfpca_ARL.R**: Includes methods required for ARL₁ for the proposed method  
+   For the proposed method:
+   - `mfpca_score`: calculate MFPC scores from multi-profile samples  
+   - `mfpca_est`: estimate MFPCA model and parameters  
+   - `ARL_initial`: initiate CUSUM chart  
+   - `Get_ARL`: get running length  
+   - `mf_hist`: estimate control limit L  
+   - `cusum_stage`: helper function for redistribution  
 
+4. **control limits train.R**  
+   - `L_train`: tunes the control limits for all methods  
 
-The detail implmentation can be refer to this paper: https://www.tandfonline.com/doi/abs/10.1080/00401706.2023.2166125
+5. **Model1_simulation.R**  
+   - Runs the simulation for Model I (Partial shift)  
 
-Link for data used in case study: https://www.kaggle.com/datasets/podsyp/production-quality?select=data_X.csv
+6. **Model2_simulation.R**  
+   - Runs the simulation for Model II (Partial shift)  
+
+## Reference
+
+The detailed implementation is described in the following paper:  
+https://www.tandfonline.com/doi/abs/10.1080/00401706.2023.2166125
+
+## Data for Case Study
+
+https://www.kaggle.com/datasets/podsyp/production-quality?select=data_X.csv
+
+## Citation
 
 If you find this work useful, please consider citing:
 
-```bash
+```bibtex
 @article{yao2023adaptive,
   title={Adaptive sampling for monitoring multi-profile data with within-and-between profile correlation},
   author={Yao, Jinwei and Xian, Xiaochen and Wang, Chao},
