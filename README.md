@@ -48,6 +48,20 @@ For proposed: mfpca_score:calculate MFPC scores from a multi-profile samples
 
 The detail implmentation can be refer to this paper: https://www.tandfonline.com/doi/abs/10.1080/00401706.2023.2166125
 
+If you find this work useful, please consider citing:
+
+```bash
+@article{yao2023adaptive,
+  title={Adaptive sampling for monitoring multi-profile data with within-and-between profile correlation},
+  author={Yao, Jinwei and Xian, Xiaochen and Wang, Chao},
+  journal={Technometrics},
+  volume={65},
+  number={3},
+  pages={375--387},
+  year={2023},
+  publisher={Taylor \& Francis}
+}
+
 Link for data used in case study: https://www.kaggle.com/datasets/podsyp/production-quality?select=data_X.csv
 
 
