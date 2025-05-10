@@ -60,7 +60,7 @@ If you find this work useful, please consider citing:
   pages={375--387},
   year={2023},
   publisher={Taylor \& Francis}
-}
+}```
 
 Link for data used in case study: https://www.kaggle.com/datasets/podsyp/production-quality?select=data_X.csv
 
