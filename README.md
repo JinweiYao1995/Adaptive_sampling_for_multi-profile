@@ -48,6 +48,8 @@ For proposed: mfpca_score:calculate MFPC scores from a multi-profile samples
 
 The detail implmentation can be refer to this paper: https://www.tandfonline.com/doi/abs/10.1080/00401706.2023.2166125
 
+Link for data used in case study: https://www.kaggle.com/datasets/podsyp/production-quality?select=data_X.csv
+
 If you find this work useful, please consider citing:
 
 ```bash
@@ -60,8 +62,6 @@ If you find this work useful, please consider citing:
   pages={375--387},
   year={2023},
   publisher={Taylor \& Francis}
-}```
-
-Link for data used in case study: https://www.kaggle.com/datasets/podsyp/production-quality?select=data_X.csv
+}
 
 
